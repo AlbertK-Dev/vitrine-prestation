@@ -31,17 +31,29 @@ export function AppBarNavLinkMenu({ items = [], show = false,  anchorid, }) {
 }
 
 export function AppBarFullNavLink({ navLink = {}, id, menuItems = [] }) {
-const [showMenu, setShowMenu] = useState(false)
+    const [showMenu, setShowMenu] = useState(false)
+    //const [displayMenu, setDisplayMenu] = useState(false)
 
     return (
-        <div onMouseOver={() => setShowMenu(true)} onMouseLeave={() => setShowMenu(false)} className='nav-link-btn'>
+        <div
+         //   onMouseEnter={()=>setDisplayMenu(true)}
+            onMouseOver={() => {
+            
+                setShowMenu(true)
+            }}
+            onMouseLeave={() => {
+                setShowMenu(false)
+              //  setTimeout(()=> setDisplayMenu(false), 1000)
+            }}
+            className='nav-link-btn'>
             <AppBarNavLink
                 id={id} to={navLink.to.replace(' ', '')}>
                 {navLink.text}
             </AppBarNavLink>
-            <AppBarNavLinkMenu
+            {//displayMenu &&
+                <AppBarNavLinkMenu
                 show={showMenu}
-                items={menuItems} anchorid={id} />
+                items={menuItems} anchorid={id} />}
 
         </div>
        
