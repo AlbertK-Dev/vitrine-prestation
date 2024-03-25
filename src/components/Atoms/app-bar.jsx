@@ -1,8 +1,8 @@
 import React from 'react'
 
-export  function AppBarNavLink({to = '', id = 2,onMouseHover, onMouseLeave, children }) {
+export  function AppBarNavLink({to = '', id = 2, children }) {
     return (
-      <div onMouseLeave={onMouseLeave} onMouseOver={onMouseHover} className='app-bar-nav-link'>
+      <div  className='app-bar-nav-link'>
             <a  href={to.replace(' ', '')} id={id} >
           {children}
           <span className='app-bar-nav-link-chevron-down'/>
@@ -13,9 +13,17 @@ export  function AppBarNavLink({to = '', id = 2,onMouseHover, onMouseLeave, chil
   )
 }
 
-export function AppBarNavMenuItem({text='', to=''}) {
+export function AppBarNavMenuItem({ text = '', to = '', index='none' }) {
+    let className = 'app-bar-nav-menu-link '
+    if (index === 'first') {
+        className = `${className} first`   
+    }else if (index === 'last') {
+        className = `${className} last`
+    } else {
+        className = 'app-bar-nav-menu-link'
+    }
     return (
-        <a className='app-bar-nav-menu-link ' href={to.replace(' ', '')} style={{display:'inline-block'}}>
+        <a className={className} href={to.replace(' ', '')} style={{display:'inline-block'}}>
             {text}
         </a>
     )

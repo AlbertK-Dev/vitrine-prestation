@@ -26,20 +26,22 @@
 @mixin menuStyle{
     position: absolute;
     height: auto;
-   display: none;
+   display: flex;
+   flex-direction: column;
     min-width: 150px;
-    background-color: rgba(39, 39, 36, 0.808);
-    padding: 2px;
-    margin: 0px;
-   // margin-top: 10px;
+    background-color: white;
+    padding: 0;
+    margin: 0;
+   margin-top: 8px;
    // transform: scale(0.8);
     border-radius: 10px;
-    color: white;
+    color: black;
+    gap: 2px;
     font-family: Arial, Helvetica, sans-serif;
 }
 .app-bar{
    
-    padding: 2px 100px;
+    padding: 2px 80px;
     height: 100%;
      
      display: flex;
@@ -64,10 +66,9 @@
 
  }
  &-logo{
-     height: 100%;
-     color:rgb(6, 174, 240);
-     font-size: 50px;
-     
+    display: flex;
+    justify-content: center;
+    align-items: center;
  }
 
 }
@@ -78,6 +79,9 @@
    
    height: 100%;
    gap: 10px;
+   min-width: 100px;
+   max-width: 120px;
+   padding: 5;
    
    &-chevron-down{
     
@@ -101,10 +105,11 @@
    &>a{
     text-decoration: none;
     display: flex;
+    text-wrap: wrap;
    
-    justify-content: center;
+    
     align-items: center;
-    gap: 7px;
+    gap: 5px;
     height: 100%;
     
     
@@ -120,27 +125,44 @@
 }
 
 .nav-link-menu{
-    @include menuStyle();
-    animation: appearSlide 400ms;
+    position: absolute;
+    height: auto;
+   display: flex;
+   flex-direction: column;
+    min-width: 150px;
+    background-color: white;
+    padding: 0;
+    margin: 0;
+   margin-top: 8px;
+   // transform: scale(0.8);
+    border-radius: 10px;
+    color: black;
+    gap: 2px;
+    font-family: Arial, Helvetica, sans-serif;
+   // animation: appearSlide 400ms;
+    
 
-    
-    &>a{
-        text-decoration: none;
-        padding: 2px;
-        background-color: transparent;
-        border-radius: 4px;
-        font-size: 1em;
-        font-family: insomnia, Arial, Helvetica, sans-serif;
-        font-weight: bold;
-        width: auto;
-        /*max-height: 30px;*/
-        transition: all 1s;
-    
-    }
   
 }
 
+.app-bar-nav-menu-link{
+    width: 100%;
+    min-height: 20px;
+    background-color: #005ca9;
+    text-decoration: none;
+    color: white;
+    padding: 10px 10px;
+    &:hover{
+        background-color: #d41459;
+    }
+    &.first{
+        border-radius: 10px 10px 0px 0px;
+    }
+    &.last{
+        border-radius: 0px 0px 10px 10px;
+    }
 
+}
 
 
 ul{
@@ -154,28 +176,30 @@ ul{
 }
 
 
-.nav-link-btn:hover .nav-link-menu{
-    display: flex;
-    flex-direction: column;
 
-}
-.nav-link-btn:hover .nav-link-menu.mouseOn{
-    display: flex;
-    flex-direction: column;
 
-}
+// .nav-link-btn:hover .nav-link-menu{
+//     display: flex;
+//     flex-direction: column;
 
-.nav-link-btn .nav-link-menu.notouch{
-    display: none;
+// }
+// .nav-link-btn:hover .nav-link-menu.mouseOn{
+//     display: flex;
+//     flex-direction: column;
+
+// }
+
+// .nav-link-btn .nav-link-menu.notouch{
+//     display: none;
     
-}
+// }
 
-.nav-link-btn .nav-link-menu.disappaer{
-    animation: disappearSlide 400ms infinite;
+// .nav-link-btn .nav-link-menu.disappaer{
+//     animation: disappearSlide 400ms infinite;
 
-}
-.nav-link-btn:hover .nav-link-menu.notouch{
-    display: none;
+// }
+// .nav-link-btn:hover .nav-link-menu.notouch{
+//     display: none;
     
-}
+// }
 

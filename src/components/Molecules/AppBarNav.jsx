@@ -1,82 +1,46 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { AppBarNavLink, AppBarNavMenuItem } from '../Atoms/app-bar'
 import { appNavData } from '../../datas/appbar'
+import { motion } from "framer-motion";
 
-
-
-export function AppBarNavLinkMenu({ items = [], show = false,  anchorid, otherClass=''}) {
-    return (
-        <div  className={`nav-link-menu ${otherClass}`} id={anchorid} aria-labelledby={anchorid} >
-            {items.map((menuItem)=> (<AppBarNavMenuItem to={menuItem.to} text={menuItem.text}/>))}
-  
-        </div>
-    )
+const menuVariants = {
+    visible: { opacity: 1, y: 0 },
+    hidden: {opacity: 0, y: 35 }
 }
 
-//const delay =(time)=> setTimeout(()=>Promise.resolve(),time)
+export function AppBarNavLinkMenu({ items = [], show = false,  anchorid, }) {
+   
+    
+         return (
+             <motion.div
+                 variants={menuVariants}
+                 animate={show ? 'visible' : 'hidden'}
+                 transition={{
+                    ease: "linear",
+                    duration: 0.3,
+                    x: { duration: 1 }
+                  }}
+                 className={`nav-link-menu`}
+                 id={anchorid}
+                 aria-labelledby={anchorid} >
+            {items.map((menuItem, index)=> (<AppBarNavMenuItem index={(index=== 0 && 'first' )||(index=== items.length-1 && 'last')  || 'none'} to={menuItem.to} text={menuItem.text}/>))}
+  
+        </motion.div>
+    )
+   
+}
 
 export function AppBarFullNavLink({ navLink = {}, id, menuItems = [] }) {
-//     const [leaving, setLeave] = useState(false)
-//     const [hover, sethover] = useState(false)
-//     const [notouch, setnotouch] = useState(true)
-//   //  const [MouseOn, setMouseOn] = useState(false)
+const [showMenu, setShowMenu] = useState(false)
 
-//     const onMouseLeave = async () => {
-//       //  alert('mouse leave')
-//         setLeave(true)
-//         delay(400)
-//         setLeave(false)
-//         setnotouch(true)
-
-//     }
-
-//     const onMouseHover = async () => {
-//       //  alert('mouseOn')
-//         setLeave(false)
-//         sethover(true)
-//         setnotouch(false)
-       
-
-//     }
-//     const menuClass = () => {
-//         if (leaving) {
-//             return 'disappaer'
-//         }
-//         if (hover) {
-//             return 'mouseOn'
-//         }
-//         if (notouch) {
-//             return 'notouch'
-//         }
-    //     }
-    
-    function myLeave() {
-        let IntervalId = null;
-        const elem = document.getElementById(`${id}`);   
-        let pos = 0;
-        clearInterval(IntervalId);
-        IntervalId = setTimeout(frame, 10);
-        function frame() {
-          if (pos === 100) {
-              clearInterval(IntervalId);
-              elem.style.display = 'none';
-          } else {
-            pos++; 
-            elem.style.marginTop = `${pos}px`; 
-          }
-        }
-      }
-   
     return (
-        <div className='nav-link-btn'>
+        <div onMouseOver={() => setShowMenu(true)} onMouseLeave={() => setShowMenu(false)} className='nav-link-btn'>
             <AppBarNavLink
-                //</div>onMouseHover={onMouseHover}
-                onMouseLeave={myLeave}
                 id={id} to={navLink.to.replace(' ', '')}>
                 {navLink.text}
             </AppBarNavLink>
             <AppBarNavLinkMenu
-               // otherClass={menuClass()}
+                show={showMenu}
                 items={menuItems} anchorid={id} />
 
         </div>

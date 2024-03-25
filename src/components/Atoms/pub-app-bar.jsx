@@ -4,7 +4,7 @@ export function PubNavLink({ to = '#nullpart', type = 'nav-link', children, clas
   
   if (type === 'contact') {
     return (
-      <PubContactLink  className={className} to={to} >{children}</PubContactLink>
+      <PubContactLink  className={`${className} contact`} to={to} >{children}</PubContactLink>
   )
     
   }

@@ -18,7 +18,7 @@ export const appNavData = [
     },
     {
         navLink: {
-            text: 'nav link 2',
+            text: 'nav link 2 super long',
             to:'#2'
         },
         menuItems: [

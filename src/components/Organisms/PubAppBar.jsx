@@ -6,10 +6,10 @@ import { PubTelLink } from '../Atoms/pub-app-bar'
 
 function PubAppBar() {
   return (
-    <div className='d-flex gap-0 column-gap-6 '>
-      <div className='d-flex gap-0 column-gap-6 p-2 '>
-        <PubTelLink text={'Tel'} tel='+237 67 97 78 52' />
-        <PubTelLink text={'Support'} tel='+237 67 97 78 52' />
+    <div className='pub-app-bar'>
+      <div className='pub-app-bar-tel '>
+        <PubTelLink className='pub-tel-link' text={'Tel'} tel='+237 67 97 78 52' />
+        <PubTelLink className='pub-tel-link sup' text={'Support'} tel='+237 67 97 78 52' />
       </div>
       <PubNavBar />
     </div>
