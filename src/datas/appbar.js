@@ -59,7 +59,7 @@ export const appNavData = [
                 to: '#sub-6'
             },
             {
-                text: 'Formulaire Déessi Urgence Ransomware',
+                text: 'Urgence Ransomware',
                 to: '#sub-7'
             },
            

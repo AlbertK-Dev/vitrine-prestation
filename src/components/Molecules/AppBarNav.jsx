@@ -8,9 +8,11 @@ const menuVariants = {
     hidden: {opacity: 0, y: 35 }
 }
 
-export function AppBarNavLinkMenu({ items = [], show = false,  anchorid, }) {
+export function AppBarNavLinkMenu({ items = [], show = false, display,  anchorid, }) {
    
-    
+    if (!display) {
+        return null
+    }
          return (
              <motion.div
                  variants={menuVariants}
@@ -46,17 +48,18 @@ export function AppBarFullNavLink({ navLink = {}, id, menuItems = [] }) {
             }}
             onMouseLeave={() => {
                 setShowMenu(false)
-                setTimerId(setTimeout(setDisplayMenu,2000, false)) 
+                setTimerId(setTimeout(setDisplayMenu,1000, false)) 
             }}
             className='nav-link-btn'>
             <AppBarNavLink
                 id={id} to={navLink.to.replace(' ', '')}>
                 {navLink.text}
             </AppBarNavLink>
-            {displayMenu &&
+            
                 <AppBarNavLinkMenu
                 show={showMenu}
-                items={menuItems} anchorid={id} />}
+                display={displayMenu}
+                items={menuItems} anchorid={id} />
 
         </div>
        
