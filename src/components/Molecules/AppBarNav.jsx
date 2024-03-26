@@ -48,7 +48,7 @@ export function AppBarFullNavLink({ navLink = {}, id, menuItems = [] }) {
             }}
             onMouseLeave={() => {
                 setShowMenu(false)
-                setTimerId(setTimeout(setDisplayMenu,1000, false)) 
+                setTimerId(setTimeout(setDisplayMenu,400, false)) 
             }}
             className='nav-link-btn'>
             <AppBarNavLink
